@@ -39,7 +39,7 @@ namespace Arena
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            player = new Joueur();
+            player = new Joueur(GraphicsDevice);
             base.Initialize();
         }
 
@@ -98,6 +98,8 @@ namespace Arena
             spriteBatch.Begin(transformMatrix: _camera.Transform);
             player.Draw_joueur(spriteBatch);
             spriteBatch.DrawString(hud, "Touche : " + key, new Vector2(player.Position.X - 300, player.Position.Y - 2), Color.White);
+            spriteBatch.DrawString(hud, "X : " + player.Position.X, new Vector2(player.Position.X - 300, player.Position.Y - 20), Color.White);
+            spriteBatch.DrawString(hud, "Y : " + player.Position.Y, new Vector2(player.Position.X - 300, player.Position.Y - 40), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
