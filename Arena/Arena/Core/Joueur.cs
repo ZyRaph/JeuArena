@@ -15,6 +15,7 @@ namespace Arena.Core
         public Rectangle taille;
         //Variables privées
         private Entree touche;
+        private char derniereTouche = '0';
         private char key;
         //Constructeur par défaut
         public Joueur()
@@ -45,24 +46,44 @@ namespace Arena.Core
 
         public void Draw_joueur(SpriteBatch spriteBatch)
         {
+            if(derniereTouche=='0')
+                spriteBatch.Draw(Apparence_b, taille, Color.White);
+
             switch (key)
             {
                 case 'Z':
                     //System.Console.WriteLine("Z");
-                    spriteBatch.Draw(Apparence_h,taille,Color.White);
+                    derniereTouche = 'Z';
                     break;
                 case 'Q':
                     //System.Console.WriteLine("Q");
-                    spriteBatch.Draw(Apparence_g, taille, Color.White);
+                    derniereTouche = 'Q';
                     break;
                 case 'S':
                     //System.Console.WriteLine("S");
-                    spriteBatch.Draw(Apparence_b, taille, Color.White);
+                    derniereTouche = 'S';
                     break;
                 case 'D':
                     //System.Console.WriteLine("D");
+                    derniereTouche = 'D';
+                    
+                    break;
+            }
+            switch (derniereTouche)
+            {
+                case 'Z':
+                    spriteBatch.Draw(Apparence_h, taille, Color.White);
+                    break;
+                case 'Q':
+                    spriteBatch.Draw(Apparence_g, taille, Color.White);
+                    break;
+                case 'S':
+                    spriteBatch.Draw(Apparence_b, taille, Color.White);
+                    break;
+                case 'D':
                     spriteBatch.Draw(Apparence_d, taille, Color.White);
                     break;
+
             }
         }
     }
